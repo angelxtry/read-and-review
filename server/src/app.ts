@@ -9,6 +9,7 @@ import databaseConn from './utils/databaseConn';
 import { common } from './config';
 import passportConfig from './passport';
 import authRouter from './routes/auth';
+import meRouter from './routes/me';
 
 const app = express();
 app.use(
@@ -25,6 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(passport.initialize());
 
 app.use('/auth', authRouter);
+app.use('/me', meRouter);
 
 app.use('/health', (_, res) => {
   res.status(200).send('health check');
